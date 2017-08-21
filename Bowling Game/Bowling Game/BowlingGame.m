@@ -1,13 +1,15 @@
 #import "BowlingGame.h"
 
-@implementation BowlingGame
+@implementation BowlingGame{
+    NSUInteger _score;
+}
 
 -(void)rollWithPinCount:(NSInteger)pins {
-    
+    _score += pins;
 }
 
 -(NSUInteger)score {
-    return 0;
+    return _score;
 }
 
 @end

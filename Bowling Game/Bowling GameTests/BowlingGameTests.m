@@ -5,22 +5,33 @@
 
 @end
 
-@implementation BowlingGameTests
+@implementation BowlingGameTests {
+    BowlingGame *game;
+}
+
+-(void)setUp {
+    [super setUp];
+    game =[[BowlingGame alloc] init];
+}
+
+-(void)tearDown {
+    game = nil;
+    [super tearDown];
+}
+
+-(void)rollPins:(NSUInteger)pins times:(NSUInteger)n {
+    for (NSUInteger i = 0; i < n; i++) {
+        [game rollWithPinCount:pins];
+    }
+}
 
 - (void)testGutterGame {
-    BowlingGame *game =[[BowlingGame alloc] init];
-    for (NSUInteger i = 0; i < 20; i++) {
-        [game rollWithPinCount:0];
-    }
-    
+    [self rollPins:0 times:20];
     XCTAssertEqual([game score], 0, @"Score should be 0");
 }
 
 - (void)testAllOnes {
-    BowlingGame *game = [[BowlingGame alloc] init];
-    for (NSUInteger i = 0; i < 20; i++) {
-        [game rollWithPinCount:1];
-    }
+    [self rollPins:1 times:20];
     XCTAssertEqual([game score], 20, @"Score should be 20");
 }
 @end

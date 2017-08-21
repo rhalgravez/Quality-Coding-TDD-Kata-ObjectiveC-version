@@ -7,7 +7,7 @@
 }
 
 -(NSUInteger)score {
-    return 999;
+    return 0;
 }
 
 @end

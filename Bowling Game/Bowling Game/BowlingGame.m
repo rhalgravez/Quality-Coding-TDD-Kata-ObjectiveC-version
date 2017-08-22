@@ -13,8 +13,10 @@
     NSUInteger score = 0;
     NSUInteger roll = 0;
     for (NSUInteger frame = 0; frame < 10; frame++) {
-        //spare
-        if ([self isSpare:roll]) {
+        if (_rolls[roll] == 10) { // strike
+            score += 10 + _rolls[roll + 1] + _rolls[roll + 2];
+            roll++;
+        }else if ([self isSpare:roll]) { // spare
             score += 10 + _rolls[roll +2];
             roll += 2;
         } else {

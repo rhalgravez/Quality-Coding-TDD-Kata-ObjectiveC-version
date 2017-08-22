@@ -58,4 +58,9 @@
     [self rollPins:0 times:16];
     XCTAssertEqual([game score], 24, @"Final score should be 24");
 }
+
+- (void)testPerfectGame {
+    [self rollPins:10 times:12];
+    XCTAssertEqual([game score], 300, @"Perfect game score 300!!");
+}
 @end

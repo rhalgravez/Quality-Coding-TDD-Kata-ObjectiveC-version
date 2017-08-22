@@ -11,18 +11,22 @@
 
 -(NSUInteger)score {
     NSUInteger score = 0;
-    NSUInteger i = 0;
+    NSUInteger roll = 0;
     for (NSUInteger frame = 0; frame < 10; frame++) {
         //spare
-        if ((_rolls[i] + _rolls[i + 1]) == 10) {
-            score += 10 + _rolls[i +2];
-            i += 2;
+        if ([self isSpare:roll]) {
+            score += 10 + _rolls[roll +2];
+            roll += 2;
         } else {
-            score += _rolls[i] + _rolls[i + 1];
-            i += 2;
+            score += _rolls[roll] + _rolls[roll + 1];
+            roll += 2;
         }
     }
     return score;
+}
+
+-(BOOL)isSpare:(NSUInteger)roll {
+    return (_rolls[roll] + _rolls[roll + 1]) == 10;
 }
 
 @end

@@ -34,4 +34,12 @@
     [self rollPins:1 times:20];
     XCTAssertEqual([game score], 20, @"Score should be 20");
 }
+
+-(void)testOneSpare {
+    [game rollWithPinCount:5];
+    [game rollWithPinCount:5];// spare
+    [game rollWithPinCount:3];
+    [self rollPins:0 times:17];// resto of rolls
+    XCTAssertEqual([game score], 16, @"Final score should be 16");
+}
 @end

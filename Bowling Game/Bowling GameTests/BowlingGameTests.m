@@ -47,8 +47,12 @@
     XCTAssertEqual([game score], 16, @"Final score should be 16");
 }
 
-- (void)testOneStrike {
+-(void)rollStrike {
     [game rollWithPinCount:10];
+}
+
+- (void)testOneStrike {
+    [self rollStrike];
     [game rollWithPinCount:3];
     [game rollWithPinCount:4];
     [self rollPins:0 times:16];
